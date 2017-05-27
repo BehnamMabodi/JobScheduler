@@ -9,6 +9,10 @@ import ir.example.behnam.jobscheduler.Class.JobScheduler.Interface.Job;
 public class PriorityScheduler extends Scheduler {
 
 
+    public PriorityScheduler() {
+        super(EXECUTION_MODE_PREEMPTIVE);
+    }
+
     @Override
     protected Job scheduleNextJob() {
         return null;

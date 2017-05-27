@@ -9,6 +9,10 @@ import ir.example.behnam.jobscheduler.Class.JobScheduler.Interface.Job;
 public class SRT extends Scheduler {
 
 
+    public SRT() {
+        super(EXECUTION_MODE_NON_PREEMPTIVE);
+    }
+
     @Override
     protected Job scheduleNextJob() {
         return null;

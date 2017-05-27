@@ -34,6 +34,7 @@ public class JobActivity extends AppCompatActivity {
     Scheduler mScheduler;
 
     boolean mPriorityMode;
+    private boolean mShouldResetOnNextJob;
 
 
     @Override
@@ -78,6 +79,13 @@ public class JobActivity extends AppCompatActivity {
         mBtnAddJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (mShouldResetOnNextJob) {
+                    mTvLog.setText(getString(R.string.Log1Title));
+                    mTvLog2.setText("");
+                    mScheduler.clearJobs();
+                    mTvName.setText("Job1");
+                    mShouldResetOnNextJob = false;
+                }
                 if (mPriorityMode) {
                     if (!mEdtArrivalTime.getText().toString().equals("") && !mEdtRequiredTime.getText().toString().equals("") && !mEdtPriority.getText().toString().equals(""))
                         addJob();
@@ -106,6 +114,7 @@ public class JobActivity extends AppCompatActivity {
         mBtnExecute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mShouldResetOnNextJob = true;
                 mScheduler.execute();
                 mTvLog2.setText(mScheduler.getLog());
                 mTvName.setText("Job1");
@@ -139,6 +148,7 @@ public class JobActivity extends AppCompatActivity {
         mTvLog.setText(getString(R.string.Log1Title));
         mTvLog2.setText("");
     }
+
     protected void clearViews() {
         mEdtArrivalTime.setText("");
         mEdtRequiredTime.setText("");

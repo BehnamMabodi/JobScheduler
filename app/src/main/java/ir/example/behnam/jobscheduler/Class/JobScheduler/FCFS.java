@@ -9,6 +9,10 @@ import ir.example.behnam.jobscheduler.Class.JobScheduler.Job.NormalJob;
 
 public class FCFS extends Scheduler {
 
+    public FCFS() {
+        super(EXECUTION_MODE_PREEMPTIVE);
+    }
+
     @Override
     protected Job scheduleNextJob() {
         Job nextJob = findSmallestArrivalTime();
@@ -23,20 +27,5 @@ public class FCFS extends Scheduler {
         return null;
     }
 
-    protected Job findSmallestArrivalTime() {
-        Job smallestArrivalTimeJob = null;
-        for (Job job : mJobList) {
-            if (!job.isFinished()) {
-                smallestArrivalTimeJob = job;
-                break;
-            }
-        }
 
-        if (smallestArrivalTimeJob != null) {
-            for (Job job : mJobList)
-                if (!job.isFinished() && job.getArrivalTime() < smallestArrivalTimeJob.getArrivalTime())
-                    smallestArrivalTimeJob = job;
-        }
-        return smallestArrivalTimeJob;
-    }
 }
