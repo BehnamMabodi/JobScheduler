@@ -21,7 +21,7 @@ public abstract class Scheduler {
         mJobList = new ArrayList<>();
     }
 
-    public void Execute() {
+    public void execute() {
         mLog = "زمان انتظار\t\tزمان سپری شده\t\tزمان باقیمانده\t\tزمان شروع\t\tکار فعلی\t\tزمان سیستم\n";
         while (true) {
             Job job = scheduleNextJob();

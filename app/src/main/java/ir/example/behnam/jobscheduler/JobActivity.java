@@ -106,7 +106,7 @@ public class JobActivity extends AppCompatActivity {
         mBtnExecute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mScheduler.Execute();
+                mScheduler.execute();
                 mTvLog2.setText(mScheduler.getLog());
                 mTvName.setText("Job1");
                 mScheduler.clearJobs();
