@@ -107,6 +107,10 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent">
 
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -130,6 +134,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"/>
         </RelativeLayout>
+        </ScrollView>
     </HorizontalScrollView>
+
 
 </android.support.constraint.ConstraintLayout>
