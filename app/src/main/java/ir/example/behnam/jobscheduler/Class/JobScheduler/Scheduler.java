@@ -46,7 +46,7 @@ public abstract class Scheduler {
 
             // Log Generation:
             if (!mCurrentJob.getName().equals("-"))
-                mLog += "\t\t" + mTime + "\t\t\t\t" + mCurrentJob.getName() + "\t\t\t" + mCurrentJob.getStartTime() + "\t\t\t\t\t" + mCurrentJob.getRemainingTime() + "\t\t\t\t\t" + mCurrentJob.getElapsedTime() + "\t\t\t\t\t" + mCurrentJob.getWaitTime() + "\n";
+                mLog += "\t\t" + mTime + "\t\t\t\t" + mCurrentJob.getName() + "\t\t\t" + mCurrentJob.getStartTime() + "\t\t\t\t\t" + mCurrentJob.getRemainingTime() + "\t\t\t\t\t" + mCurrentJob.getElapsedTime() + "\t\t\t\t\t" + mCurrentJob.getWaitTime(mTime) + "\n";
             else
                 mLog += "\t\t" + mTime + "\t\t\t\t\t" + mCurrentJob.getName() + "\t\t\t" + mCurrentJob.getName() + "\t\t\t\t\t" + mCurrentJob.getName() + "\t\t\t\t\t" + mCurrentJob.getName() + "\t\t\t\t\t" + mCurrentJob.getName() + "\n";
             mTime += mExecutionTimeSteps;
@@ -104,6 +104,23 @@ public abstract class Scheduler {
                     smallestRequiredTimeJob = job;
         }
         return smallestRequiredTimeJob;
+    }
+
+    protected Job findSmallestRemainingTime() {
+        Job smallestRemainingTimeJob = null;
+        for (Job job : mJobList) {
+            if (!job.isFinished()) {
+                smallestRemainingTimeJob = job;
+                break;
+            }
+        }
+
+        if (smallestRemainingTimeJob != null) {
+            for (Job job : mJobList)
+                if (!job.isFinished() && job.getRemainingTime() < smallestRemainingTimeJob.getRemainingTime() && job.getArrivalTime() <= mTime)
+                    smallestRemainingTimeJob = job;
+        }
+        return smallestRemainingTimeJob;
     }
 
     protected void sortJobsByArrivalTime() {

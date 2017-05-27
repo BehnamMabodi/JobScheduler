@@ -20,7 +20,7 @@ public interface Job {
 
     int getElapsedTime();
 
-    int getWaitTime();
+    int getWaitTime(int currentSystemTime);
 
     boolean isFinished();
 

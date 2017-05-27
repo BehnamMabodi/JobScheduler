@@ -68,7 +68,7 @@ public class NormalJob implements Job {
     }
 
     @Override
-    public int getWaitTime() {
+    public int getWaitTime(int currentSystemTime) {
         if (mStartTime != -1)
             return mStartTime - mArrivalTime;
         return mStartTime;
