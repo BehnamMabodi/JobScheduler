@@ -4,7 +4,7 @@
     <string name="description">توضیحات:\n
 الگوریتم های SRT و Priority به صورت بدون قبضه کردن پیاده سازی شده اند\n
 \n
-قسمت Log قابلیت اسکرول در جهت افقی دارد\n
+قسمت Log قابلیت اسکرول در جهت افقی و عمودی دارد\n
 </string>
     <string name="Log1Title">Log:\n\n
 اولویت\t\tزمان موردنیاز\t\tزمان ورود\t\tکار\n</string>
